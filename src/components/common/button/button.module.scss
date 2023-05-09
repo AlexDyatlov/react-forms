@@ -1,0 +1,9 @@
+.btn {
+  border-radius: 6px;
+  padding: 12px 20px;
+  font-family: 'Montserrat', 'Arial', 'Helvetica', sans-serif;
+
+  &:hover {
+    opacity: 0.88;
+  }
+}

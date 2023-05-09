@@ -1,0 +1,18 @@
+.calendar {
+  max-width: 200px;
+
+  &__label {
+    margin-bottom: 3px;
+    display: inline-block;
+    color: #0077ff;
+    cursor: pointer;
+  }
+
+  &__picker {
+    margin-bottom: 12px;
+  }
+
+  &__field input {
+    width: 100%;
+  }
+}
