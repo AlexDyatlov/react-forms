@@ -5,9 +5,31 @@ import ru from 'date-fns/locale/ru';
 import 'react-datepicker/dist/react-datepicker.css';
 import styles from './calendar.module.scss';
 
-const Calendar = () => {
+import { bookingTimeDate } from '../../../utils/bookingTimeDate';
+
+const Calendar = ({ name, nameBooking, onChange }) => {
   const [startDate, setStartDate] = useState(new Date());
+  const [timestampStartBooking, setTimestampStartBooking] = useState(startDate.getTime());
+
   const [bookingTime, setBookingTime] = useState(new Date().setHours(0, 15));
+  const [, setTimestampBookingTime] = useState(bookingTimeDate(bookingTime, timestampStartBooking));
+
+  const handleChange = (date) => {
+    const newTimestamp = date.getTime();
+
+    setStartDate(date);
+    setTimestampStartBooking(newTimestamp);
+    onChange({ name, value: newTimestamp });
+  };
+
+  const handleChangeBookingTime = (date) => {
+    const newTimestampBookingTime = bookingTimeDate(date.getTime(), timestampStartBooking);
+
+    setBookingTime(date.getTime());
+    setTimestampBookingTime(newTimestampBookingTime);
+
+    onChange({ name: nameBooking, value: newTimestampBookingTime });
+  };
 
   return (
     <div className={styles.calendar}>
@@ -16,7 +38,7 @@ const Calendar = () => {
         <DatePicker
           selected={startDate}
           wrapperClassName={styles.calendar__field}
-          onChange={(date) => setStartDate(date)}
+          onChange={handleChange}
           showTimeSelect
           locale={ru}
           timeFormat="HH:mm"
@@ -32,7 +54,7 @@ const Calendar = () => {
         <DatePicker
           selected={bookingTime}
           wrapperClassName={styles.calendar__field}
-          onChange={(date) => setBookingTime(date)}
+          onChange={handleChangeBookingTime}
           showTimeSelect
           locale={ru}
           showTimeSelectOnly

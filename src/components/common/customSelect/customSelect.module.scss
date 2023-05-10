@@ -36,10 +36,12 @@
     right: 0;
     left: 0;
     padding: 15px;
+    max-height: 140px;
     background-color: #fff;
     border: 1px solid #c2c2c2;
     border-radius: 3px;
     z-index: 1;
+    overflow: auto;
   }
 
   &__option {
