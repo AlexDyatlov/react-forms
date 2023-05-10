@@ -32,5 +32,5 @@
 
 ### <a name="result"></a> 🖼️ Результат
 <p align="center">
-  <img src="https://github.com/AlexDyatlov/To-Do-List/blob/main/src/assets/readme.png">
+  <img src="https://github.com/AlexDyatlov/react-forms/blob/main/src/assets/readme.png">
 </p>
